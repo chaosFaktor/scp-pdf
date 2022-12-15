@@ -1,0 +1,8 @@
+{ PIP }
+pdfkit
+request
+bs4
+
+
+{ apt }
+wkhtmltopdf

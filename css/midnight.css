@@ -1,0 +1,18 @@
+<style>
+    body{
+        background: rgb(3, 16, 47);
+        color:rgb(226, 226, 226);
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        padding:8px;
+    }
+    p{
+        font-size: large;
+        text-shadow: 0 0 2px black;
+    }
+    strong{
+        font-size: x-large;
+        text-shadow: 0 0 3px black;
+    }
+
+
+</style>

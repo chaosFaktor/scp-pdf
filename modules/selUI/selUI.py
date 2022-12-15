@@ -27,7 +27,7 @@ class 2axes
 
 def build2axesSelectionMenutoString(config):
 """
-def quitckInputPrompt(title):
+def quickInputPrompt(title):
     print(title)
     print('▄'*24)
     inp =''
@@ -64,13 +64,13 @@ class SelectionMenu:
     # The maxLen describes the length to cut any line of the menu
     #
     #
-    defaultOptions=['│', 'O', ' ', 0, '▄', 100]
+    defaultOptions=['│', 'O', ' ', 0, '▄', 40]
     seperator = "|"
     selFlag = "O"
     nulFlag = " "
     sel = 0
     subHeading = " "
-    maxLen = 60
+    maxLen = 30
 
 
     def __init__(self, entrys, title, seperator, selFlag, nullFlag, sel, subHeading, maxLen):

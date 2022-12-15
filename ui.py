@@ -4,20 +4,21 @@ import modules.ANSIcolour as ansi
 import modules.selUI.selUI as selUI
 import modules.selUI.uniKey as uniKey
 import shared
-import modules.scpDownloader as scpDownloader
+import scpDownloader as scpDownloader
 
 
 
 
 def mainMenu():
+    os.system('clear')
 
-    cui = [   ansi.RESET+'TstTitel' + 14*' '+ banner.lgbtq[0],
-            'Bitte wähle eine der Optionen, um fortzufahren:' +6*' '+banner.lgbtq[1],
+    cui = [   ansi.RESET+'Input credentials accepted' + 14*' '+ banner.lgbtq[0],
+            'Welcome to the SCP-Database, operator' +8*' '+banner.lgbtq[1],
             ' '*53+banner.lgbtq[2],
             ]
         
-    entr = ['Download as PDF'+' '*31+banner.lgbtq[5],
-            'Download as HTML',
+    entr = ['Download'+' '*31+banner.lgbtq[5],
+            '',
             'Exit']
             
             
@@ -41,8 +42,9 @@ def mainMenu():
             # Elif since switch statements suck in python
             sel=curSelui.select()
             if sel == entr[0]:
-                scp=selUI.quitckInputPrompt('Bitte SCP-Nummer eingeben')
-                scpDownloader.pdfDownload(scp)
+                scp=scpDownloader.scpPrompt()
+                css=scpDownloader.cssPrompt()
+                scpDownloader.pdfDownload(scp, css)
             elif sel == entr[2]:
                 pass
 
