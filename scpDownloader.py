@@ -8,7 +8,7 @@ import modules.ANSIcolour as ansi
 
 def convertHtmlToPdf(soup, out='./out'):
     import pdfkit
-    pdfkit.from_file('./out.html', out+'.pdf', options={"enable-local-file-access": True})
+    pdfkit.from_file(out+'.html', out+'.pdf', options={"enable-local-file-access": True})
 
 def uniPrompt():
     inp =''
@@ -64,8 +64,8 @@ def loadCSS(soup, css):
 def pdfDownload(scp, css, out=''):
     html=dwnld_raw_scp(scp)
     html=loadCSS(html, css)
-    open('./out.html', 'w').write(html.prettify())
-    convertHtmlToPdf(html)
+    open('./'+str(scp)+'.html', 'w').write(html.prettify())
+    convertHtmlToPdf(html, str(scp))
     shared.escape()
 
 
