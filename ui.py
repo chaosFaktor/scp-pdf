@@ -17,8 +17,8 @@ def mainMenu():
             ' '*53+banner.lgbtq[2],
             ]
         
-    entr = ['Download'+' '*31+banner.lgbtq[5],
-            '',
+    entr = ['Download SCP'+' '*31+banner.lgbtq[5],
+            'Download universal',
             'Exit']
             
             
@@ -46,7 +46,9 @@ def mainMenu():
                 css=scpDownloader.cssPrompt()
                 scpDownloader.pdfDownload(scp, css)
             elif sel == entr[2]:
-                pass
+                scp=scpDownloader.uniPrompt()
+                css=scpDownloader.cssPrompt()
+                scpDownloader.pdfDownload(scp, css)
 
         os.system('clear')
 

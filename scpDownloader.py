@@ -9,7 +9,14 @@ import modules.ANSIcolour as ansi
 def convertHtmlToPdf(soup, out='./out'):
     import pdfkit
     pdfkit.from_file('./out.html', out+'.pdf', options={"enable-local-file-access": True})
-    
+
+def uniPrompt():
+    inp =''
+    while inp=='':
+        os.system('clear')
+        print('Please enter the desired Entry below')
+        inp=input('->')
+    return inp
 def scpPrompt():
     inp =''
     while inp=='':
