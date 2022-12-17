@@ -6,12 +6,16 @@
         padding:8px;
     }
     p{
+        color:rgb(226, 226, 226);
         font-size: large;
         text-shadow: 0 0 2px black;
     }
     strong{
         font-size: x-large;
         text-shadow: 0 0 3px black;
+    }
+    .scp-image-caption{
+        background-color: black;
     }
 
 

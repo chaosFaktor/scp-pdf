@@ -6,10 +6,14 @@
         font-family: "Times New Roman", Times, serif;
     }
     p{
+        color:rgb(226, 226, 226);
         font-size: large;
     }
     strong{
         font-size: x-large;
+    }
+    .scp-image-caption{
+        background-color: rgb(4, 22, 42);
     }
 
 

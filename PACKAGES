@@ -1,7 +1,8 @@
 { PIP }
 pdfkit
-request
+requests
 bs4
+os
 
 
 { apt }

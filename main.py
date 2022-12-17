@@ -4,8 +4,8 @@ import shared
 
 
 while True:
-    ui.mainMenu()
     try:
         ui.mainMenu()
-    except:
+    except Exception as ex:
+        raise ex
         shared.escape()

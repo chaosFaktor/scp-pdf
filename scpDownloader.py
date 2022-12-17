@@ -42,30 +42,60 @@ def cssPrompt():
         
 
 def dwnld_raw_scp(scp):
-   url='https://scp-wiki.wikidot.com/scp-'+str(scp)
-   site=requests.get(url)
-   soup=BeautifulSoup(site.text, features='lxml')
-   scptxt=soup.find('div', {'id': 'page-content'})
-   scptxt.find('div', {'class': 'collapsible-block-unfolded'})['class'] = ''
-   return scptxt
+    
+    url='https://scp-wiki.wikidot.com/scp-'+str(scp)
+    site=requests.get(url)
+    soup=BeautifulSoup(site.text, features='lxml')
+    scptxt=soup.find('div', {'id': 'page-content'})
+    try:
+        scptxt.find('div', {'class': 'collapsible-block-unfolded'})['class'] = ''
+    except:
+        pass
+    return scptxt
+def dwnld_raw_article(scp):
+    
+    url='https://scp-wiki.wikidot.com/'+str(scp)
+    site=requests.get(url)
+    soup=BeautifulSoup(site.text, features='lxml')
+    scptxt=soup.find('div', {'id': 'page-content'})
+    try:
+        scptxt.find('div', {'class': 'collapsible-block-unfolded'})['class'] = ''
+    except:
+        pass
+    return scptxt
+
 
 def loadCSS(soup, css):
     try:
         default_css = open(shared.cssdefaultdir, 'r').read()
         new_css = open(css, 'r').read()
-        soup.append(BeautifulSoup(new_css, features='lxml'))
-        soup.append(BeautifulSoup(default_css, features='lxml'))
+        charset= open(shared.maindir+'/charset.html')
+        charset.string='charset="'+(open(shared.maindir+'/charset.html', 'r').read())+'"'
+    ##  Appending global-CSS file, User-chosen CSS file (theme), Charset nescessary to use non-asci-letters
+        soup.insert(0, BeautifulSoup(charset, features='lxml'))
+        soup.insert(1, BeautifulSoup(default_css, features='lxml'))
+        soup.insert(2, BeautifulSoup(new_css, features='lxml'))
+        
+        
         return soup
-    except:
+    except Exception as ex:
         print(ansi.Bold.RED+'ERROR! Konnte CSS '+css+' nich laden' +ansi.RESET)
-        raise NameError
+        raise ex
 
 
-def pdfDownload(scp, css, out=''):
-    html=dwnld_raw_scp(scp)
+def pdfDownload(scp, css, isObject=True, out=''):
+    scp=str(scp).lower()
+    if isObject:
+        html=dwnld_raw_scp(scp)
+    else:
+        html=dwnld_raw_article(scp)
     html=loadCSS(html, css)
-    open('./'+str(scp)+'.html', 'w').write(html.prettify())
-    convertHtmlToPdf(html, str(scp))
+    if os.getcwd()==shared.maindir:
+        open('./scps/'+str(scp)+'.html', 'w').write(html.prettify())
+        convertHtmlToPdf(html, './scps/'+str(scp))
+    else:
+        open('./'+str(scp)+'.html', 'w').write(html.prettify())
+        convertHtmlToPdf(html, str(scp))
     shared.escape()
 
 

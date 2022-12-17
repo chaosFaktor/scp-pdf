@@ -44,11 +44,11 @@ def mainMenu():
             if sel == entr[0]:
                 scp=scpDownloader.scpPrompt()
                 css=scpDownloader.cssPrompt()
-                scpDownloader.pdfDownload(scp, css)
+                scpDownloader.pdfDownload(scp, css, True)
             elif sel == entr[1]:
                 scp=scpDownloader.uniPrompt()
                 css=scpDownloader.cssPrompt()
-                scpDownloader.pdfDownload(scp, css)
+                scpDownloader.pdfDownload(scp, css, False)
 
         os.system('clear')
 
